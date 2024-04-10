@@ -1,0 +1,18 @@
+node {
+    
+    stage('SCM') { // for display purposes
+      git branch: 'main', url: 'https://github.com/classes-101/ruch-app.git'
+       
+    }
+    stage('install') {
+        sh 'npm install'
+        
+    }
+    stage('build') {
+       sh 'npm run build'
+    }
+    stage('deploy') {
+        sh 'sudo cp -r /var/lib/jenkins/workspace/ruchi-pipeline/dist/ruchi-app/browser/* /var/www/html/'
+       
+    }
+}
