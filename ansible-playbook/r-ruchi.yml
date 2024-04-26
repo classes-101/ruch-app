@@ -1,0 +1,6 @@
+---
+- name: call roles playbook
+  hosts: all
+  become: yes
+  roles:
+    - ruchi-role

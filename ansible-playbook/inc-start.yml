@@ -1,0 +1,6 @@
+---
+- name: start the nginx service 
+  service:
+    name: nginx
+    state: started
+         

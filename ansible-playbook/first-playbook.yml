@@ -1,0 +1,22 @@
+---
+- name: this is my first playbook
+  hosts: all
+  become: yes
+  tasks:
+    - name: install nginx software
+      apt:
+        name: nginx
+        state: present
+    - name: start the nginx service 
+      service:
+        name: nginx
+        state: started
+    - name: copy the index file
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
+    - name: restart the nginx service
+      service:
+        name: nginx
+        state: restarted
+         

@@ -1,0 +1,8 @@
+---
+- name: add child files
+  include_tasks: "{{item}}"
+  with_items:
+    - inc-install.yml
+    - inc-copy.yml
+    - inc-start.yml
+    - inc-restart.yml

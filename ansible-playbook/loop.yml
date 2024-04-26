@@ -1,0 +1,14 @@
+---
+- name: this is my first playbook
+  hosts: all
+  become: yes
+  tasks:
+    - name: install nginx software
+      apt:
+        name: "{{item.a}}" 
+        state: "{{item.b}}"
+      with_items:
+        - {a: git, b: present}
+        - {a: nginx, b: absent}
+        - {a: tree, b: present}
+         
