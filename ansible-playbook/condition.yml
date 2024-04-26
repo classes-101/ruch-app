@@ -1,0 +1,18 @@
+---
+- name: this is my first playbook
+  hosts: all
+  become: yes
+  vars:
+    - a: 9
+  tasks:
+    - name: install nginx software
+      apt:
+        name: "{{item.a}}" 
+        state: "{{item.b}}"
+      with_items:
+        - {a: git, b: present}
+        - {a: nginx, b: absent}
+        - {a: tree, b: present}
+      when:
+        a == 10
+         
