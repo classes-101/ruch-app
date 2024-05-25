@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('SCM') {
+            steps {
+                git branch: 'main', url: 'https://github.com/classes-101/ruch-app.git'
+            }
+        }
+        stage('install') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('package') {
+            steps {
+                sh 'npm run build --prod'
+            }
+        }
+        stage('deploy') {
+            steps {
+               sh 'sudo cp -r /var/lib/jenkins/workspace/ruchi-pipeline/dist/ruchi-app/browser/* /var/www/html/'
+            }
+        }
+    }
+}
